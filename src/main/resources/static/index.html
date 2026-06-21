@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Gradient header -->
+  <div class="grad-header">
+    <div class="header-title">
+      <i class="ti ti-link" style="font-size:22px;color:#fff;"></i>
+      <span>URL Shortener</span>
+      <span class="pill" style="background:rgba(255,255,255,.18);color:#fff;margin-left:4px;">
+        <i class="ti ti-bolt" style="font-size:11px;"></i> fast
+      </span>
+    </div>
+    <p class="header-sub">Paste a long URL — get a short link instantly.</p>
+
+    <div class="input-row">
+      <div class="input-wrap">
+        <i class="ti ti-world"></i>
+        <input id="urlInput" type="text" placeholder="https://your-very-long-url.com/path?query=value" />
+      </div>
+      <button class="shorten-btn" id="shortenBtn" onclick="shortenUrl()">
+        <i class="ti ti-scissors" style="font-size:15px;"></i> Shorten
+      </button>
+    </div>
+
+    <div id="error">
+      <i class="ti ti-alert-circle" style="font-size:16px;flex-shrink:0;"></i>
+      <span id="errorMsg"></span>
+    </div>
+
+    <div id="resultBar">
+      <div class="result-row">
+        <i class="ti ti-check" style="font-size:18px;color:#9FE1CB;flex-shrink:0;"></i>
+        <a id="shortLink" href="#" target="_blank" onclick="trackClick(this.href)"></a>
+        <button class="copy-btn" onclick="copyLink()">
+          <i class="ti ti-copy" style="font-size:14px;"></i>
+          <span id="copyLabel">Copy</span>
+        </button>
+        <button class="reset-btn" onclick="resetForm()" title="New URL">
+          <i class="ti ti-refresh" style="font-size:14px;"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two tables -->
+  <div class="tables-grid">
+
+    <!-- Shortened URLs table -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon purple"><i class="ti ti-list"></i></div>
+        <span class="card-title">Shortened URLs</span>
+        <span class="badge-purple" id="shortCount">0</span>
+      </div>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th style="width:42%;">Original</th>
+            <th style="width:38%;">Short link</th>
+            <th style="width:20%;">Copy</th>
+          </tr>
+        </thead>
+        <tbody id="shortenedBody">
+          <tr class="tbl-empty"><td colspan="3">No URLs shortened yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Click history table -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon teal"><i class="ti ti-mouse"></i></div>
+        <span class="card-title">Click History</span>
+        <span class="badge-teal" id="clickCount">0 clicks</span>
+      </div>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th style="width:40%;">Short link</th>
+            <th style="width:20%;text-align:center;">Clicks</th>
+            <th style="width:40%;">Last clicked</th>
+          </tr>
+        </thead>
+        <tbody id="clickBody">
+          <tr class="tbl-empty"><td colspan="3">No clicks recorded yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <p class="footer-note">
+    Connects to <code>/shorten</code> on your backend &middot; Click any short link above to track it
+  </p>
+
+</div>
+
+<script src="/js/script.js"> </script>
+</body>
+</html>

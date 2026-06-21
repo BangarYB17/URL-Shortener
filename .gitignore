@@ -1,0 +1,18 @@
+```gitignore
+# Maven build folder
+/target/
+
+# Eclipse generated files
+/.apt_generated/
+/.apt_generated_tests/
+/.settings/
+/.project
+/.classpath
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+```
